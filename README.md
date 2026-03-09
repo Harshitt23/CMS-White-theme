@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dabas EV CMS (Admin Portal)
 
-## Getting Started
+This repository contains the **Dabas EV CMS / Admin Portal**, delivered as a **freelance engagement** for **Dabas EV Company** to support day-to-day operational management of EV charging infrastructure and business workflows from a centralized dashboard.
 
-First, run the development server:
+## What we delivered
+
+- **Admin dashboard** for operational visibility
+- **Charger & station management** (stations, chargers, profiles, logs, and map view)
+- **Company & client management** screens
+- **Billing & payments** area (charging sessions + licensing)
+- **User management** (including administrator section)
+- **Notifications** and **complaints** screens
+- **Theme system** (light/dark) and a reusable UI component set
+
+## Tech stack
+
+- **Next.js (App Router)** + **React** + **TypeScript**
+- **Tailwind CSS** (with utility merging) + **MUI** + **Radix UI**
+- **Zustand** for state management
+- **AG Grid / AG Charts** + **Chart.js** for analytics/visualization
+- **Leaflet / React-Leaflet** for map views
+
+## Local setup
+
+### Prerequisites
+
+- **Node.js**: 18+ recommended (20+ preferred)
+- **npm** (or your preferred package manager)
+
+### Install
+
+```bash
+npm install
+```
+
+### Environment variables
+
+Create a `.env.local` in the project root:
+
+```bash
+# Backend base endpoint for stations/chargers listing
+NEXT_PUBLIC_BE_URL=
+
+# Heartbeat endpoint (expects `?stationId=...`)
+NEXT_PUBLIC_HEARTBEAT_URL=
+
+# Charger profile API base (the app calls `${NEXT_PUBLIC_PROFILE_API}/${profileId}`)
+NEXT_PUBLIC_PROFILE_API=
+```
+
+If these are not set or the backend is unreachable, the UI will fall back to **dummy data** for a smoother local/demo experience.
+
+### Run (development)
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Useful scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **`npm run dev`**: start local dev server
+- **`npm run build`**: production build
+- **`npm run start`**: run the production server
+- **`npm run lint`**: run ESLint
 
-## Learn More
+## Deployment notes
 
-To learn more about Next.js, take a look at the following resources:
+This is a standard Next.js application and can be deployed on:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Vercel** (recommended for simplest deployment), or
+- Any Node.js hosting that supports `next build` + `next start`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Make sure the same environment variables from `.env.local` are configured in the hosting provider.
 
-## Deploy on Vercel
+## Project structure (high level)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **`app/`**: routes, layouts, and UI for modules (dashboard, charger, company, bills, users, etc.)
+- **`hooks/`**: data-fetching hooks (with graceful fallbacks)
+- **`components/`** + **`app/components/`**: reusable UI components and module components
+- **`store/`**: global state (Zustand)
+- **`lib/`**: utilities, types, and shared helpers
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Client / ownership
+
+This project was implemented for **Dabas EV Company**. Source code and branding are intended for internal business use unless otherwise agreed.
+
