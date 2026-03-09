@@ -1,0 +1,87 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ---------- Animations ---------- */
+@keyframes slideLeft {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+.animate-slideLeft {
+  animation: slideLeft 0.5ms ease-out;
+}
+
+/* ---------- Theme Base Colors ---------- */
+.theme-light {
+  --bg: #ffffff;
+  --text: #000000;
+}
+
+.theme-dark {
+  --bg: #0f0f0f;
+  --text: #f1f1f1;
+}
+
+/* ---------- Background Images ---------- */
+.theme-light body {
+  background-image: url("/bg_light.png");
+}
+
+.theme-dark body {
+  background-image: url("/bg.png");
+}
+
+/* ---------- Global Application ---------- */
+body {
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  scroll-behavior: smooth;
+}
+
+/* ---------- Tailwind Theme Mapping ---------- */
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-poppins);
+  --font-mono: "Courier New", monospace;
+}
+
+/* ---------- Tailwind Global Layer ---------- */
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
+}
