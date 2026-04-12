@@ -85,3 +85,5 @@ Make sure the same environment variables from `.env.local` are configured in the
 ## Client / ownership
 
 This project was implemented for **Dabas EV Company**. Source code and branding are intended for internal business use unless otherwise agreed.
+
+ssd
